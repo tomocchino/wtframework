@@ -1,0 +1,7 @@
+wtframework!? is a bookmarklet for determining which, if any, JavaScript frameworks a particular webpage is using.
+
+The PHP file dynamically generates the bookmarklet from the latest version of the source every time the page is refreshed.
+
+To use, simply drag the bookmarklet to your bookmarks bar, and click when curious...
+
+to see it in action: http://tomocchino.com/sandbox/wtframework
