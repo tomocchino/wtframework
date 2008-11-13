@@ -1,23 +1,54 @@
 (function(){
 
+	var frameworks = {
+		'Base2': function(){
+			if (window.base2) return base2.version;
+		},
+
+		'Dojo': function(){
+			if (window.dojo) return dojo.version;
+		},
+
+		'jQuery': function(){
+			if (window.jQuery) return jQuery.fn.jquery;
+		},
+
+		'MochiKit': function(){
+			if (window.MochiKit) return MochiKit.MochiKit.VERSION;
+		},
+
+		'MooTools': function(){
+			if (window.MooTools) return MooTools.version;
+		},
+
+		'Prototype': function(){
+			if (window.Prototype) return Prototype.Version;
+		},
+
+		'Script.aculo.us': function(){
+			if (window.Scriptaculous) return Scriptaculous.Version;
+		},
+
+		'Yahoo UI': function(){
+			if (window.YAHOO) return YAHOO.VERSION;
+		},
+
+		'Ext JS': function(){
+			if (window.Ext) return Ext.version;
+		}
+	};
+
 	var id = '__wtframework_bar__';
 	var bar = document.getElementById(id);
 	var remove = function(){ document.body.removeChild(bar); };
 	if (bar){ remove(); return; }
 
 	var found = [];
-	var format = function(name, version){
-		return '<span style="color:#9cf; font-weight:bold;">' + name + '</span>: ' + version;
-	};
+	for (framework in frameworks){
+		var version = frameworks[framework]();
+		if (version != undefined) found.push('<span style="color:#9cf; font-weight:bold;">' + framework + '</span>: ' + version);
+	}
 
-	if (window.base2) found.push(format('Base2', base2.version));
-	if (window.dojo) found.push(format('Dojo', dojo.version));
-	if (window.jQuery) found.push(format('jQuery', jQuery.fn.jquery));
-	if (window.MochiKit) found.push(format('MochiKit', MochiKit.MochiKit.VERSION));
-	if (window.MooTools) found.push(format('MooTools', MooTools.version));
-	if (window.Prototype) found.push(format('Prototype', Prototype.Version)); 
-	if (window.Scriptaculous) found.push(format('Script.aculo.us', Scriptaculous.Version));
-	if (window.YAHOO) found.push(format('Yahoo UI', YAHOO.VERSION));
 	if (!found.length) found.push('No major framework found.');
 
 	var props = {
