@@ -1,5 +1,10 @@
 (function(){
 
+	var id = '__wtframework_bar__';
+	var bar = document.getElementById(id);
+	var remove = function(){ document.body.removeChild(bar); };
+	if (bar){ remove(); return; }
+
 	var frameworks = {
 		'Base2': function(){
 			if (window.base2) return base2.version;
@@ -7,6 +12,10 @@
 
 		'Dojo': function(){
 			if (window.dojo) return dojo.version;
+		},
+
+		'Ext JS': function(){
+			if (window.Ext) return Ext.version;
 		},
 
 		'jQuery': function(){
@@ -31,24 +40,14 @@
 
 		'Yahoo UI': function(){
 			if (window.YAHOO) return YAHOO.VERSION;
-		},
-
-		'Ext JS': function(){
-			if (window.Ext) return Ext.version;
 		}
 	};
-
-	var id = '__wtframework_bar__';
-	var bar = document.getElementById(id);
-	var remove = function(){ document.body.removeChild(bar); };
-	if (bar){ remove(); return; }
 
 	var found = [];
 	for (framework in frameworks){
 		var version = frameworks[framework]();
 		if (version != undefined) found.push('<span style="color:#9cf; font-weight:bold;">' + framework + '</span>: ' + version);
 	}
-
 	if (!found.length) found.push('No major framework found.');
 
 	var props = {
