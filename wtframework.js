@@ -26,8 +26,15 @@
 			if (window.MochiKit) return MochiKit.MochiKit.VERSION;
 		},
 
-		'MooTools': function(){
+		'MooTools-Core': function(){
 			if (window.MooTools) return MooTools.version;
+		},
+
+		'MooTools-More': function(){
+			if (!window.MooTools) return;
+			
+			if (window.MooTools.More) return MooTools.More.version;
+			else if (window.Tips || window.Drag) return '< 1.2.2.1';
 		},
 
 		'Prototype': function(){
@@ -58,19 +65,20 @@
 
 	var styles = {
 		background: '#111',
-		color: "#eee",
-		filter: "alpha(opacity=90)",
+		color: '#eee',
+		filter: 'alpha(opacity=90)',
 		opacity: 0.9,
-		top: "15px",
-		right: "15px",
-		position: "fixed",
-		padding: "7px 15px",
-		border: "solid 3px #eee",
-		textAlign: "left",
-		font: "12px Lucida Grande, Helvetica, Tahoma",
-		WebkitBoxShadow: "0px 1px 8px rgba(0,0,0,0.8)",
-		MozBoxShadow: "0px 5px 10px #000",
-		textShadow: '2px 2px 0px #000',
+		top: '15px',
+		right: '15px',
+		position: 'fixed',
+		padding: '7px 15px',
+		border: 'solid 3px #eee',
+		textAlign: 'left',
+		font: '12px Lucida Grande, Helvetica, Tahoma',
+		WebkitBoxShadow: '0px 1px 8px rgba(0, 0, 0, 0.8)',
+		MozBoxShadow: '0px 5px 10px #000',
+		BoxShadow: '0px 5px 10px #000',
+		textShadow: '2px 2px 0px #111',
 		cursor: 'pointer',
 		zIndex: 32767
 	};
