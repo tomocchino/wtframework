@@ -21,6 +21,10 @@
 		'jQuery': function(){
 			if (window.jQuery) return jQuery.fn.jquery;
 		},
+		
+		'jQuery UI': function() {
+			if (window.jQuery && $.ui) return $.ui.version;
+		},
 
 		'MochiKit': function(){
 			if (window.MochiKit) return MochiKit.MochiKit.VERSION;
